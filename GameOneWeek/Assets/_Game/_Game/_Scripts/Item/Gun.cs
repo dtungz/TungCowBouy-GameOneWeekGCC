@@ -1,30 +1,15 @@
 using System;
 using UnityEngine;
 
-public class Gun : Item, ICollectable, IShootable
+public class Gun : Item, ICollectable
 {
     [SerializeField] GunSO itemData;
 
-    private int currBullets, currMags;
-
-    private void Start()
-    {
-        currBullets = itemData.bulletCount;
-        currMags = itemData.magCount;
-    }
+    public int currBullets = 10, currMags = 12;
+    
 
     public void OnCollected(PlayerCollect collector)
     {
         collector.CollectItem(this);
-    }
-
-    public void Shoot()
-    {
-        
-    }
-
-    public void Reload()
-    {
-        
     }
 }

@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerCollect : MonoBehaviour
 {
     [SerializeField] private List<Item> Inventory = new List<Item>(6);  
+    [SerializeField] private int currBullet, currMegs;
+    
     
     public void CollectItem(Item item)
     {
@@ -14,11 +16,19 @@ public class PlayerCollect : MonoBehaviour
             if(Inventory[i] == null)
             {
                 Inventory[i] = item;
+                Gun gun = item.GetComponent<Gun>();
+                if (gun != null)
+                {
+                    currBullet = gun.currBullets;
+                    currMegs = gun.currMags;
+                }
                 break;
             }
         }
     }
-
+    
+    
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         ICollectable item = other.GetComponent<ICollectable>();
