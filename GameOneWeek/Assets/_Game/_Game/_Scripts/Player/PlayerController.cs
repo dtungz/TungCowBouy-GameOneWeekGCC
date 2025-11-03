@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         if (_gameManager.currState == GameManager.GameState.Playing)
         {
             dirPlayer = inputAction.ReadValue<Vector2>();
+            dirPlayer.Normalize();
             _rb.linearVelocity = dirPlayer * speedPlayer;
         }
     }
