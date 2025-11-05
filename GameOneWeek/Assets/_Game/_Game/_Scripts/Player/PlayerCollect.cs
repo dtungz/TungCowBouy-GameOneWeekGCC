@@ -2,13 +2,21 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCollect : MonoBehaviour
 {
     [SerializeField] private List<Item> Inventory = new List<Item>(6);  
     [SerializeField] private int currBullet, currMegs;
-    
-    
+    InputAction collectAction;
+    InputAction dropAction;
+
+    private void Awake()
+    {
+        collectAction = InputSystem.actions.FindAction("Collect");
+        dropAction = InputSystem.actions.FindAction("Drop");
+    }
+
     public void CollectItem(Item item)
     {
         for (int i = 0; i < Inventory.Count; i++)
@@ -36,7 +44,6 @@ public class PlayerCollect : MonoBehaviour
         {
             Debug.Log(other.name + " collected");
             item.OnCollected(this);
-            
         }
     }
 }
