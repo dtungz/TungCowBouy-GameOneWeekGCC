@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Gun : Item, ICollectable
 {
-    [SerializeField] GunSO itemData;
     public bool New = true;
     public int currBullets = 10, currMags = 12;
     

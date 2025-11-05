@@ -2,14 +2,15 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Meele : MonoBehaviour, IEnemy, ITakeDamageable
+public class Range : MonoBehaviour, IEnemy, IShootable, ITakeDamageable
 {
+    [SerializeField] private EnemyBullet BulletPrefab;
     [SerializeField] private EnemySO data;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Transform _target;
     [SerializeField] private Transform _tf;
-    [SerializeField] private LayerMask _playerMask;
-    [SerializeField] private SpriteRenderer _sr => this.GetComponent<SpriteRenderer>();
+    [SerializeField] private LayerMask _playerMask; 
+    private SpriteRenderer _sr => this.GetComponent<SpriteRenderer>();
     [SerializeField] PlayerManager _playerManager;
     [SerializeField] private float distance; // Khoảng cách giữa Player và Enemy
     public bool onAttacked = false, isAttacking = false;
@@ -19,9 +20,10 @@ public class Meele : MonoBehaviour, IEnemy, ITakeDamageable
 
     private void Start()
     {
+        BulletPrefab.gameObject.SetActive(false);
         currHP = data.HP;
     }
-
+    
     private void Update()
     {
         if (currHP <= 0)
@@ -31,7 +33,7 @@ public class Meele : MonoBehaviour, IEnemy, ITakeDamageable
         }
         distance = Vector3.Distance(_target.position, transform.position);
         BeetweenPlayer = (Vector2)(_target.position - _tf.position);
-
+        XoayNguoi();
         if (distance <= data.AttackRange)
         {
             Attack();
@@ -45,7 +47,6 @@ public class Meele : MonoBehaviour, IEnemy, ITakeDamageable
     public void TakeDamage(int damage)
     {
         currHP -= damage;
-        if (currHP <= 0)
         onAttacked = true;
         _rb.AddForce(-BeetweenPlayer.normalized * 3f, ForceMode2D.Impulse);
         if (delayTakeDamage != null)
@@ -91,13 +92,14 @@ public class Meele : MonoBehaviour, IEnemy, ITakeDamageable
         yield return new WaitForSeconds(0.5f);
         //Debug.DrawLine(_target.position, BeetweenPlayer.normalized * data.AttackRange * 2, Color.red);
         _sr.color = Color.blue;
-        if (Physics2D.Raycast(_tf.position, BeetweenPlayer, data.AttackRange + 0.5f, _playerMask))
-        {
-            _playerManager.TakeDamage(data.Damage);
-        }
+        Shoot((Vector2)transform.right);
         yield return new WaitForSeconds(1f);
         isAttacking = false;
         _sr.color = Color.white;
+        if (BulletPrefab.gameObject.activeInHierarchy)
+        {
+            BulletPrefab.gameObject.SetActive(false);
+        }
     }
     
     private void OnDisable()
@@ -106,4 +108,19 @@ public class Meele : MonoBehaviour, IEnemy, ITakeDamageable
         onAttacked = false;
         isAttacking = false;
     }
+
+    private void XoayNguoi()
+    {
+        Vector3 lookDir = _target.position - transform.position;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        _rb.rotation = angle;
+    }
+    
+    public void Shoot(Vector2 direction)
+    {
+        BulletPrefab.gameObject.SetActive(true); 
+        BulletPrefab.transform.position = _tf.position;
+        BulletPrefab.FireBullet(direction, data.Damage, data.AttackRange);
+    }
+    
 }

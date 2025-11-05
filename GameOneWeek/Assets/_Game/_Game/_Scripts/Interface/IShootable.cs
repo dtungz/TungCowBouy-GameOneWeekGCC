@@ -2,6 +2,5 @@ using UnityEngine;
 
 public interface IShootable
 {
-    public void Shoot();
-    public void Reload();
+    public void Shoot(Vector2 direction);
 }

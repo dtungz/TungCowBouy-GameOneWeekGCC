@@ -1,13 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour, ITakeDamageable
 {
     [SerializeField] private SpriteRenderer _sr;
-    private float hp = 200;
+    private int hp = 200;
     private Coroutine makeColor;
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         hp -= damage;
         if (makeColor != null)
