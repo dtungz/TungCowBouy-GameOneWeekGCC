@@ -45,7 +45,8 @@ public class Meele : MonoBehaviour, IEnemy, ITakeDamageable
     public void TakeDamage(int damage)
     {
         currHP -= damage;
-        if (currHP <= 0)
+        Debug.Log(currHP);
+        //if (currHP <= 0)
         onAttacked = true;
         _rb.AddForce(-BeetweenPlayer.normalized * 3f, ForceMode2D.Impulse);
         if (delayTakeDamage != null)

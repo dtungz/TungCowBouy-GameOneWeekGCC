@@ -114,6 +114,7 @@ public class Range : MonoBehaviour, IEnemy, IShootable, ITakeDamageable
         Vector3 lookDir = _target.position - transform.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         _rb.rotation = angle;
+        
     }
     
     public void Shoot(Vector2 direction)

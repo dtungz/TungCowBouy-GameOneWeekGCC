@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Rifle
   m_EditorClassIdentifier: Assembly-CSharp::GunSO
   <damage>k__BackingField: 15
-  <speedShoot>k__BackingField: 0.1
-  <speedReload>k__BackingField: 3
-  <rangeShoot>k__BackingField: 0
-  <bulletCount>k__BackingField: 0
-  <magCount>k__BackingField: 0
+  <delayPrevShot>k__BackingField: 0
+  <delay>k__BackingField: 3
+  <speedReload>k__BackingField: 2

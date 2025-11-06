@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8601490620068198571}
   - component: {fileID: 1947063331185001886}
   - component: {fileID: 2320854087209787763}
+  - component: {fileID: 826998343398083335}
   m_Layer: 6
   m_Name: MeeleEnemy
   m_TagString: Untagged
@@ -189,3 +190,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &826998343398083335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778642334254104864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7046489edad081041adafb1d789d4d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameUnit
+  PoolType: 0

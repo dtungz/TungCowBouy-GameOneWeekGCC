@@ -1,12 +1,39 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerShoot : MonoBehaviour, IShootable
+public class PlayerShoot : MonoBehaviour
 {
-    [SerializeField] private GameObject _bulletPrefab;
-    
-    public void Shoot(Vector2 direction)
+    InputAction shootAction;
+    Camera cam;
+
+    [SerializeField] private List<GunSO> OptionGun = new List<GunSO>();
+    GunStatic currentGun;
+
+    [SerializeField] Rifle GunRif;
+
+    private void Awake()
     {
-        // TODO:
+        cam = Camera.main;
     }
-    
+
+    private void Start()
+    {
+        shootAction = InputSystem.actions.FindAction("Shoot");
+    }
+
+    private void Update()
+    {
+        Shooting();
+    }
+
+    private void Shooting()
+    {
+        if (shootAction.WasPressedThisFrame())
+        {
+            Vector2 direction = Mouse.current.position.ReadValue();
+            direction = cam.ScreenToWorldPoint(direction);
+            GunRif.Shoot(direction);
+        }
+    }
 }
