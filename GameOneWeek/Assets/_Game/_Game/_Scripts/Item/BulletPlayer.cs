@@ -21,6 +21,7 @@ public class BulletPlayer : GameUnit
         currentGun = ChoiceGun.currGun;
         damage = OptionGun[(int)currentGun].damage;
         delay = OptionGun[(int)currentGun].delay;
+        Debug.Log(delay);
         Invoke(nameof(DeSpawn), delay);
     }
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072ac922a552da04eb94eca34247b5e6, type: 3}
   m_Name: Snip
   m_EditorClassIdentifier: Assembly-CSharp::GunSO
-  <damage>k__BackingField: 50
-  <delayPrevShot>k__BackingField: 0
+  <damage>k__BackingField: 30
+  <delayPrevShot>k__BackingField: 1
   <delay>k__BackingField: 5
   <speedReload>k__BackingField: 4

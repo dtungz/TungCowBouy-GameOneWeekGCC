@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour, ITakeDamageable
         if (makeColor != null)
             makeColor = null;
         makeColor = StartCoroutine(ChangeColor());
-        Debug.Log("Người chơi còn lại " + hp + "hp");
+        //Debug.Log("Người chơi còn lại " + hp + "hp");
     }
     
     

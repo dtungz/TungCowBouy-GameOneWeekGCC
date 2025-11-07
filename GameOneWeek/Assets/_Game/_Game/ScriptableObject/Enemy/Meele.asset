@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc353674bc4a804fad259aabd44916b, type: 3}
   m_Name: Meele
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
-  <HP>k__BackingField: 30
+  <HP>k__BackingField: 50
   <Damage>k__BackingField: 15
   <AttackRange>k__BackingField: 1.3
   <speed>k__BackingField: 5
