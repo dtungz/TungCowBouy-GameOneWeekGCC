@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletPlayer
   PoolType: 1
   _rb: {fileID: 7784028735709728258}
-  speed: 15
+  speed: 25
   OptionGun:
   - {fileID: 11400000, guid: 64364f60c4a8a16419b2c44f1648350c, type: 2}
   - {fileID: 11400000, guid: 49956595ee39a5d4cb8277b72aa801b1, type: 2}

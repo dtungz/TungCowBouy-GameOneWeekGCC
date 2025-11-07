@@ -11,9 +11,9 @@ public class PlayerShoot : MonoBehaviour
     Coroutine ShoootingDelay;
     private float timeDelayShoot;
     GunStatic currWeapon;
-
+    [SerializeField] PlayerAmountManager playerAmountManager;
     [SerializeField] private List<GunSO> OptionGun = new List<GunSO>();
-    [SerializeField] Rifle GunRif;
+    [SerializeField] Gun _gun;
 
     private void Awake()
     {
@@ -34,7 +34,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Shooting()
     {
-        if (shootAction.IsPressed() && !isShoting)
+        if (shootAction.IsPressed() && !isShoting && PlayerShootingState.state == PlayerState.Shoot)
         {
             if(ShoootingDelay != null)
             {
@@ -43,7 +43,8 @@ public class PlayerShoot : MonoBehaviour
             ShoootingDelay = StartCoroutine(ShootingDelayTime());
             Vector2 direction = Mouse.current.position.ReadValue();
             direction = cam.ScreenToWorldPoint(direction);
-            GunRif.Shoot(direction);
+            _gun.Shoot(direction);
+            playerAmountManager.IncAmount();
         }
     }
 
