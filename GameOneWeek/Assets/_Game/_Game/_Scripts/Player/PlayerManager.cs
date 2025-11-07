@@ -12,15 +12,13 @@ public class PlayerManager : MonoBehaviour, ITakeDamageable
         hp -= damage;
         if (makeColor != null)
             makeColor = null;
-        makeColor = StartCoroutine(ChangeColor());
+        makeColor = StartCoroutine(ChangeColor(Color.red));
         //Debug.Log("Người chơi còn lại " + hp + "hp");
     }
     
-    
-    
-    IEnumerator ChangeColor()
+    IEnumerator ChangeColor(Color color)
     {
-        _sr.color = Color.red;
+        _sr.color = color;
         yield return new WaitForSeconds(0.2f);
         _sr.color = Color.white;
     }
