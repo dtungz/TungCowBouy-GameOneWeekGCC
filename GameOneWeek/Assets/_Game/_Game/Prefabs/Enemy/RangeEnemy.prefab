@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bea5467023aa5c41b276bd25c6003a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Range
+  PoolType: 2
   BulletPrefab: {fileID: 1589280758821208154}
   data: {fileID: 11400000, guid: ce42d80008308b542aeb345e60ecafdd, type: 2}
   _rb: {fileID: 7673847021985746106}

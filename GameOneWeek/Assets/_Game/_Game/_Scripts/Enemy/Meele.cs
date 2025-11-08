@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Meele : MonoBehaviour, IEnemy, ITakeDamageable
+public class Meele : GameUnit, IEnemy, ITakeDamageable
 {
     [SerializeField] private EnemySO data;
     [SerializeField] private Rigidbody2D _rb;
@@ -16,9 +16,11 @@ public class Meele : MonoBehaviour, IEnemy, ITakeDamageable
     private Coroutine delayAttack, delayTakeDamage;
     private Vector2 BeetweenPlayer;
     private int currHP;
+    int rateDrop;
 
-    private void Start()
+    private void OnEnable()
     {
+        //BulletPrefab.gameObject.SetActive(false);
         currHP = data.HP;
     }
 
@@ -26,7 +28,10 @@ public class Meele : MonoBehaviour, IEnemy, ITakeDamageable
     {
         if (currHP <= 0)
         {
-            gameObject.SetActive(false);
+            rateDrop = UnityEngine.Random.Range(0, 101);
+            if (rateDrop > 60)
+                Drop();
+            PoolManager.Despawn(this);
             return;
         }
         distance = Vector3.Distance(_target.position, transform.position);
@@ -106,5 +111,10 @@ public class Meele : MonoBehaviour, IEnemy, ITakeDamageable
         StopAllCoroutines();
         onAttacked = false;
         isAttacking = false;
+    }
+
+    private void Drop()
+    {
+        PoolManager.Spawn<AmountLooting>(PoolType.Amount, transform.position, Quaternion.identity);
     }
 }

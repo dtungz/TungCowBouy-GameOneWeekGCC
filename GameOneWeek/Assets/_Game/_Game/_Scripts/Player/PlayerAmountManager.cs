@@ -75,5 +75,8 @@ public class PlayerAmountManager : MonoBehaviour
         PlayerShootingState.state = PlayerState.Shoot;
     }
 
-
+    public void UpdateBullet(int i)
+    {
+        Inventory[i].y++;
+    }
 }

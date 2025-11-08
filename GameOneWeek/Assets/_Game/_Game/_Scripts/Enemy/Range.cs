@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Range : MonoBehaviour, IEnemy, IShootable, ITakeDamageable
+public class Range : GameUnit, IEnemy, IShootable, ITakeDamageable
 {
     [SerializeField] private EnemyBullet BulletPrefab;
     [SerializeField] private EnemySO data;
@@ -17,18 +17,28 @@ public class Range : MonoBehaviour, IEnemy, IShootable, ITakeDamageable
     private Coroutine delayAttack, delayTakeDamage;
     private Vector2 BeetweenPlayer;
     private int currHP;
+    private int rateDrop;
 
-    private void Start()
+    //private void Start()
+    //{
+    //    BulletPrefab.gameObject.SetActive(false);
+    //    currHP = data.HP;
+    //}
+
+    private void OnEnable()
     {
         BulletPrefab.gameObject.SetActive(false);
         currHP = data.HP;
     }
-    
+
     private void Update()
     {
         if (currHP <= 0)
         {
-            gameObject.SetActive(false);
+            rateDrop = UnityEngine.Random.Range(0, 101);
+            if(rateDrop > 60)
+                Drop();
+            PoolManager.Despawn(this);
             return;
         }
         distance = Vector3.Distance(_target.position, transform.position);
@@ -123,5 +133,10 @@ public class Range : MonoBehaviour, IEnemy, IShootable, ITakeDamageable
         BulletPrefab.transform.position = _tf.position;
         BulletPrefab.FireBullet(direction, data.Damage, data.AttackRange);
     }
-    
+
+    private void Drop()
+    {
+        PoolManager.Spawn<AmountLooting>(PoolType.Amount, transform.position, Quaternion.identity);
+    }
+
 }
