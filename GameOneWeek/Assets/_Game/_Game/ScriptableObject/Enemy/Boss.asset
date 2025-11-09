@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc353674bc4a804fad259aabd44916b, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
-  <HP>k__BackingField: 500
-  <Damage>k__BackingField: 30
+  <HP>k__BackingField: 2000
+  <Damage>k__BackingField: 40
   <AttackRange>k__BackingField: 3
   <speed>k__BackingField: 10
-  <active>k__BackingField: 200
+  <active>k__BackingField: 500

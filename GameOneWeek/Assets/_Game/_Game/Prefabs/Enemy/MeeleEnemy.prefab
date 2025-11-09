@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2320854087209787763}
   m_Layer: 6
   m_Name: MeeleEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7408cd52bb4b7a44296abca54717c887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Meele
-  PoolType: 2
+  PoolType: 4
   data: {fileID: 11400000, guid: a256b0ec0cb794f46bda4ee62710e02b, type: 2}
   _rb: {fileID: 1947063331185001886}
   _target: {fileID: 0}

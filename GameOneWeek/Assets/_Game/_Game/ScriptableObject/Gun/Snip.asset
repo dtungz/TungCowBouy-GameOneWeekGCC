@@ -17,4 +17,4 @@ MonoBehaviour:
   <damage>k__BackingField: 30
   <delayPrevShot>k__BackingField: 1
   <delay>k__BackingField: 5
-  <speedReload>k__BackingField: 4
+  <speedReload>k__BackingField: 3
