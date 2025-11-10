@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using NUnit.Framework;
+using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -15,6 +17,8 @@ public class Boss : MonoBehaviour, ITakeDamageable, IEnemy
     [SerializeField] private float distance; // Khoảng cách giữa Player và Enemy
     [SerializeField] private Key key;
     [SerializeField] private SpawnManager spawnManager;
+    //[SerializeField] private List<EnemyBullet> _bullets = new List<EnemyBullet>();
+    //[SerializeField] private List<Transform> _bulletPosition = new List<Transform>();
     public bool onAttacked = false, isAttacking = false;
     private Coroutine delayAttack, delayTakeDamage;
     private Vector2 BeetweenPlayer;
@@ -122,4 +126,17 @@ public class Boss : MonoBehaviour, ITakeDamageable, IEnemy
         key.SetPossition(_tf);
         key.gameObject.SetActive(true);
     }
+
+    //public void Shoot(Vector2 direction)
+    //{
+    //    for(int i = 0; i < _bullets.Count; i++)
+    //    {
+    //        _bullets[i].gameObject.SetActive(true);
+    //        _bullets[i].transform.position = _bulletPosition[i].position;
+
+
+    //        _bullets[i].FireBullet(direction, data.Damage, data.AttackRange);
+    //    }
+        
+    //}
 }

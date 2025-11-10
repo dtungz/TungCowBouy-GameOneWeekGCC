@@ -42,6 +42,7 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnEnemy()
     {
+        if((int)wave <= 3)
         for(int i = 1; i <= (int)wave + 1; i++)
         {
             for(int j = 0; j < TransformSpawn.Count; j++)
@@ -61,9 +62,9 @@ public class SpawnManager : MonoBehaviour
                 }
             }
         }
-        if((int)wave < 3)
+        if((int)wave <= 3)
             wave = (Wave)((int)wave + 1);
-        else if((int)wave == 4)
+        if((int)wave == 4)
             DoneWave = true;
     }
 
