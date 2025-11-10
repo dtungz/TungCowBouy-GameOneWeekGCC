@@ -1,5 +1,7 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BossShoot : MonoBehaviour, IShootable
@@ -90,5 +92,7 @@ public class BossShoot : MonoBehaviour, IShootable
         BulletPrefab.transform.position = _tf.position;
         BulletPrefab.FireBullet(direction, data.Damage, data.AttackRange);
     }
+
+    
 
 }

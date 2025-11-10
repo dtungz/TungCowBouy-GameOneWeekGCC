@@ -11,6 +11,7 @@ public class Boss : MonoBehaviour, ITakeDamageable, IEnemy
     [SerializeField] private Transform _target;
     [SerializeField] private Transform _tf;
     [SerializeField] private LayerMask _playerMask;
+    [SerializeField] private List<GameObject> bulletSpawning = new List<GameObject>();
     [SerializeField] private SpriteRenderer _sr => this.GetComponent<SpriteRenderer>();
     [SerializeField] private GameManager _gameManager;
     [SerializeField] PlayerManager _playerManager;
@@ -52,6 +53,7 @@ public class Boss : MonoBehaviour, ITakeDamageable, IEnemy
         {
             Movement();
         }
+        ControlBullet();
     }
 
     public void TakeDamage(int damage)
@@ -60,7 +62,7 @@ public class Boss : MonoBehaviour, ITakeDamageable, IEnemy
         //Debug.Log(currHP);
         //if (currHP <= 0)
         onAttacked = true;
-        _rb.AddForce(-BeetweenPlayer.normalized * 3f, ForceMode2D.Impulse);
+        _rb.AddForce(-BeetweenPlayer.normalized * 1.2f, ForceMode2D.Impulse);
         if (delayTakeDamage != null)
         {
             delayTakeDamage = null;
@@ -127,6 +129,15 @@ public class Boss : MonoBehaviour, ITakeDamageable, IEnemy
         key.gameObject.SetActive(true);
     }
 
+    private void ControlBullet() // I dunnu why bullet not following boss so thit func had born
+    {
+        bulletSpawning[0].transform.position = _tf.position + new Vector3(1, 0, 0) * 5;
+        bulletSpawning[1].transform.position = _tf.position + new Vector3(-1, 0, 0) * 5;
+        bulletSpawning[2].transform.position = _tf.position + new Vector3(0, 1, 0) * 5;
+        bulletSpawning[3].transform.position = _tf.position + new Vector3(0, -1, 0) * 5;
+
+    }
+
     //public void Shoot(Vector2 direction)
     //{
     //    for(int i = 0; i < _bullets.Count; i++)
@@ -137,6 +148,6 @@ public class Boss : MonoBehaviour, ITakeDamageable, IEnemy
 
     //        _bullets[i].FireBullet(direction, data.Damage, data.AttackRange);
     //    }
-        
+
     //}
 }
